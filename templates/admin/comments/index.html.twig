@@ -1,0 +1,38 @@
+{% extends 'base_content.html.twig' %}
+
+{% block title %}Управление Комментариями{% endblock %}
+
+{% block content %}
+    <h1>Управление комментариями ({{ pagination.totalItemCount }})</h1>
+
+    {% include 'partial/admin_form.html.twig' %}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Статья</th>
+            <th>Автор</th>
+            <th>Комментарий</th>
+            <th>Дата</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for comment in pagination %}
+                <tr>
+                    <td>
+                        <a href="{{ path('app_article_show', { slug: comment.article.slug }) }}">
+                            {{ comment.article.title }}
+                        </a>
+                    </td>
+                    <td>{{ comment.authorName }}</td>
+                    <td style="width: 20%;">{{ comment.content|u.truncate(40, '...') }}</td>
+                    <td>{{ comment.createdAt|ago }} {% if comment.deletedAt %} DELETED {% endif %}</td>
+                </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">Нет комментариев</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

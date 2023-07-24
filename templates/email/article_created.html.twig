@@ -1,0 +1,57 @@
+{% extends 'email/emailBase.html.twig' %}
+
+{% block content %}
+    <table class="head-wrap">
+        <tr>
+            <td></td>
+            <td class="header container">
+
+                <div class="content">
+                    <table>
+                        <tr>
+                            <td><h6 class="collapse">Оповещение о создании статьи</h6></td>
+                            <td align="right"><a class="collapse" href="{{ url('app_homepage') }}">Spill-Coffee-On-The-Keyboard</a></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </td>
+            <td></td>
+        </tr>
+    </table>
+
+    <table class="body-wrap">
+        <tr>
+            <td></td>
+            <td class="container">
+
+                <div class="content">
+                    <table>
+                        <tr>
+                            <td>
+
+                                <h1>Новая статья на сайте!</h1>
+                                <p class="lead">На сайте была создана новая статья.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="content">
+                    <table>
+                        <tr>
+                            <td class="small post-image" width="20%"><img src="http://placehold.it/240x150" alt=""/></td>
+                            <td>
+                                <h3>{{ article.title }} <small>{{ article.author.firstName }}</small></h3>
+                                <p class="">{{ article.description }} </p>
+                                <a class="btn" href="{{ url('app_article_show', {slug: article.slug}) }}">Читать</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </td>
+            <td></td>
+        </tr>
+    </table>
+{% endblock %}

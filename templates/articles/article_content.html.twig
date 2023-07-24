@@ -1,0 +1,30 @@
+{% extends 'base_content.html.twig' %}
+
+{% block title %}Управление Комментариями{% endblock %}
+
+{% block content %}
+    <h1>Управление комментариями</h1>
+
+    <form>
+        <div class="form-group">
+            <label for="paragraphs">Количество параграфов</label>
+            <input type="number" name="paragraphs" placeholder="Введите количество параграфов" id="paragraphs" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="word">Вставляемое слово</label>
+            <input type="text" name="word" placeholder="Введите вставляемое слово" id="word" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="wordsCount">Количество повторений вставляемого слова</label>
+            <input type="number" name="wordsCount" placeholder="Введите количество повторений вставляемого слова" id="wordsCount" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-success my-2">Отправить</button>
+    </form>
+
+    <div class="col-12 mt-2 mb-4">
+        {{ articleContent|cached_markdown }}
+    </div>
+{% endblock %}

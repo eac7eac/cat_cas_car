@@ -1,0 +1,71 @@
+{% extends 'base_content.html.twig' %}
+
+{% block title %}Управление Статьями{% endblock %}
+
+{% block content %}
+    <h1>Управление статьями ({{ pagination.totalItemCount }})</h1>
+
+    <div><a class="mb-2 btn btn-primary" href="{{ path('app_admin_articles_create') }}">Создать новую статью</a></div>
+
+    <form>
+        <div class="input-group mb-3">
+            <input type="text"
+                   name="q"
+                   class="form-control"
+                   placeholder="Найти..."
+                   value="{{ app.request.query.get('q') }}"
+            >
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mb-3">
+            <div class="input-group mb-3">
+                <div class="dropdown">
+                    <button type="submit"
+                            class="btn btn-secondary dropdown-toggle"
+                            data-toggle="dropdown">
+                        Количество элементов
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item" type="submit" name="count" value="10">10</button>
+                        <button class="dropdown-item" type="submit" name="count" value="20">20</button>
+                        <button class="dropdown-item" type="submit" name="count" value="50">50</button>
+                    </div>
+                </div>
+            </div>
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Статья</th>
+            <th>Описание</th>
+            <th>Автор</th>
+            <th>Опубликована</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in pagination %}
+            <tr>
+                <td>
+                    <a href="{{ path('app_admin_article_edit', { id: article.id}) }}">
+                        <i class="fas fa-pen"></i>
+                        {{ article.title }}
+                    </a>
+                </td>
+                <td>{{ article.description }}</td>
+                <td>{{ article.author.firstName }}</td>
+                <td><i class="fas fa-{{ article.isPublished ? 'check' : 'times'}}"></i></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Нет статей</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

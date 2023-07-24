@@ -1,0 +1,9 @@
+# Read the documentation: https://github.com/1up-lab/OneupFlysystemBundle/blob/release/3.x/Resources/doc/index.md
+oneup_flysystem:
+    adapters:
+        uploads_articles_adapter:
+            local:
+                directory: '%kernel.project_dir%/public/%article_uploads%'
+    filesystems:
+        uploads_articles:
+            adapter: uploads_articles_adapter

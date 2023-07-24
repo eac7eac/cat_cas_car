@@ -1,0 +1,3 @@
+<?php // prod.encrypt.public on Tue, 18 Apr 2023 16:59:49 +0200
+
+return "\x88\xA5\xF6jX\xE5\x1FXp\x3A\xF7\xFE\xC2\xC8e5L\x10is5\xE7\xAB\xFB\xB6\xCBdR6\xBE\xB9V";

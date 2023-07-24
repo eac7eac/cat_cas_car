@@ -1,0 +1,23 @@
+{% extends 'base_content.html.twig' %}
+
+{% block title %}Административный раздел{% endblock %}
+
+{% block content %}
+    <h1>Административный раздел</h1>
+
+    <div class="list-group my-4">
+        <a href="{{ path('app_admin_comments') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Раздел управления комментариями
+            <span class="badge badge-primary badge-pill">{{ comments|length }}</span>
+        </a>
+        <a href="{{ path('app_admin_tags') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Раздел управления тэгами
+            <span class="badge badge-primary badge-pill">{{ tags|length }}</span>
+        </a>
+        <a href="{{ path('app_admin_articles') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Раздел управления статьями
+            <span class="badge badge-primary badge-pill">{{ articles|length }}</span>
+        </a>
+    </div>
+
+{% endblock %}

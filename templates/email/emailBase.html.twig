@@ -1,0 +1,40 @@
+{% apply inline_css(source('@css/email/email.css')) %}
+<!doctype html>
+<html lang="ru">
+<head>
+
+    <meta name="viewport" content="width=device-width"/>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>{{ email.subject }}</title>
+
+
+    <link rel="stylesheet" type="text/css" href="email.css"/>
+
+</head>
+<body>
+
+{% block content %}
+{% endblock %}
+
+<table class="footer-wrap">
+    <tr>
+        <td></td>
+        <td class="container">
+            <div class="content">
+                <table>
+                    <tr>
+                        <td align="center">
+                            <p class="gray">С любовью, Spill-Coffee-On-The-Keyboard</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td></td>
+    </tr>
+</table>
+
+</body>
+</html>
+{% endapply %}

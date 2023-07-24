@@ -1,0 +1,23 @@
+{{ form_start(articleForm) }}
+    {% if articleForm.vars.data.imageFilename %}
+        <img src="{{ articleForm.vars.data.imageFilename | imagine_filter('articles_preview') }}">
+    {% endif %}
+
+    {{ form_row(articleForm.image, {
+        label: 'Изображение',
+        attr: {
+            placeholder: 'Выберите изображение'
+        }
+    }) }}
+
+    {{ form_row(articleForm.title) }}
+    {{ form_row(articleForm.description) }}
+    {{ form_row(articleForm.body) }}
+    {% if articleForm.publishedAt is defined %}
+        {{ form_row(articleForm.publishedAt, { label: 'Дата публикации' }) }}
+    {% endif %}
+    {{ form_row(articleForm.keywords) }}
+    {{ form_row(articleForm.author) }}
+
+<button type="submit" class="btn btn-primary">{{ button_text }}</button>
+{{ form_end(articleForm) }}
